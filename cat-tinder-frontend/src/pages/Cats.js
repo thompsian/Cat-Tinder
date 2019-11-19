@@ -13,10 +13,17 @@ class Cats extends Component {
             {this.props.cats.map((cat, index) =>{
               return (
                 <ListGroup.Item key={index}>
-                  <h4>
-                    <span className='cat-name'>{cat.name}</span> - <small className='cat-age'>{cat.age} years old</small>
-                  </h4>
-                    <span className='cat-enjoys'>{cat.enjoys}</span>
+                    <div class="card mb-3">
+                      <h3 class="card-header">
+                        <span className='cat-name'>{cat.name}</span>
+                      </h3>
+                      <div class="card-body">
+                        <h5 class="card-title" className='cat-age'>{cat.age} years old</h5>
+                      </div>
+                      <img style={{height: 200, width: "100%", display: "block"}} src="https://live.staticflickr.com/68/172629460_f55d8b084d_z.jpg" alt="Card image" />
+
+                        <span className='cat-enjoys'>{cat.enjoys}</span>
+                    </div>
                 </ListGroup.Item>
     )
   })}
