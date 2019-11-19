@@ -6,6 +6,8 @@ class NewCat extends Component {
     return (
 		<div>
 			<h2>NewCat</h2>
+            <label id="name">Name</label>
+            <input type="text"></input>
 		</div>
     );
   }
