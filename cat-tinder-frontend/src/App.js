@@ -35,8 +35,12 @@ class App extends Component {
             enjoys: "Being in charge."
           }
       ],
-      form: {}
+      form: {
+          name:"",
+          age:"",
+          enjoys:""
       }
+    }
   }
 
   handleNewCat = (value) => {

@@ -18,8 +18,6 @@ class NewCat extends Component {
     handleChange = (event) => {
         let {form} = this.props
         form[event.target.name] = event.target.value
-        form[event.target.age] = event.target.value
-        form[event.target.enjoys] = event.target.value
         this.setState({form: form})
     }
 
