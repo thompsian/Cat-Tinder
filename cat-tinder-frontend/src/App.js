@@ -34,18 +34,25 @@ class App extends Component {
             age: 12,
             enjoys: "Being in charge."
           }
-        ]
+      ],
+      form: {}
       }
   }
+
+  handleNewCat = (value) => {
+      console.log(this.state.form)
+  }
+
   render() {
     return (
 		<div>
-			<Header />
+
 			<Router>
+              <Header />
 				<Switch>
                   <Route exact path="/cats" render={( props) => <Cats cats={this.state.cats}/> } />
 
-				  <Route exact path="/NewCat" component={NewCat} />
+				  <Route exact path="/NewCat" render={( props) => <NewCat handleNewCat={this.handleNewCat} form={this.state.form} /> } />
                   <Route exact path="/" component={Home} />
 				</Switch>
 			</Router>

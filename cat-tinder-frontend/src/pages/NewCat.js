@@ -6,19 +6,25 @@ import Button from 'react-bootstrap/Button'
 class NewCat extends Component {
     constructor(props){
       super(props)
-      this.state = {
-        form:{
-          name: '',
-          age: '',
-          enjoys: ''
-        }
-      }
+      // this.state = {
+      //   form:{
+      //     name: '',
+      //     age: '',
+      //     enjoys: ''
+      //   }
+      // }
     }
 
     handleChange = (event) => {
-        let {form} = this.state
+        let {form} = this.props
         form[event.target.name] = event.target.value
+        form[event.target.age] = event.target.value
+        form[event.target.enjoys] = event.target.value
         this.setState({form: form})
+    }
+
+    handleClick = (form) => {
+        this.props.handleNewCat(form)
     }
   render() {
     return (
@@ -29,23 +35,23 @@ class NewCat extends Component {
                 type="text"
                 name="name"
                 onChange={this.handleChange}
-                value={this.state.form.name}
+                value={this.props.form.name}
             />
             <label id="age">Age</label>
             <Form.Control
                 type="text"
                 name="age"
                 onChange={this.handleChange}
-                value={this.state.form.age}
+                value={this.props.form.age}
             />
             <label id="enjoys">Enjoys</label>
             <Form.Control
                 type="text"
                 name="enjoys"
                 onChange={this.handleChange}
-                value={this.state.form.enjoys}
+                value={this.props.form.enjoys}
             />
-            <button type="button" className="btn btn-primary" id="submit">Create Cat Profile</button>
+            <button type="button" className="btn btn-primary" id="submit" onClick={this.handleClick}>Create Cat Profile</button>
 		</div>
     );
   }
