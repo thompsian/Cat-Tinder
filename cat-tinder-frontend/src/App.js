@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import 'bootswatch/dist/sketchy/bootstrap.min.css'
+import { getCats , createCat } from './api'
 
 
 // import "/Users/learn/Desktop/Cat-Tinder/cat-tinder-frontend/public/bootstrap.min.css"
@@ -15,26 +16,7 @@ class App extends Component {
   constructor(props){
     super(props)
       this.state = {
-        cats: [
-          {
-            id: 1,
-            name: 'Morris',
-            age: 2,
-            enjoys: "Long walks on the beach."
-          },
-          {
-            id: 2,
-            name: 'Paws',
-            age: 4,
-            enjoys: "Snuggling by the fire."
-          },
-          {
-            id: 3,
-            name: 'Mr. Meowsalot',
-            age: 12,
-            enjoys: "Being in charge."
-          }
-      ],
+        cats: [],
       form: {
           name:"",
           age:"",
@@ -43,8 +25,24 @@ class App extends Component {
     }
   }
 
-  handleNewCat = (value) => {
-      console.log(this.state.form)
+  resetForm = () => {
+      this.setState({form: {name: '', age: '', enjoys: ''}})
+  }
+
+  handleNewCat(newCatInfo) {
+	return createCat(newCatInfo)
+    .then(successCat => {
+        console.log("SUCCESS! New cat: ", successCat);
+    })
+}
+
+  componentDidMount() {
+    getCats()
+  	.then(APIcats => {
+  	  this.setState({
+  		cats: APIcats
+  	  })
+  	})
   }
 
   render() {
@@ -56,7 +54,9 @@ class App extends Component {
 				<Switch>
                   <Route exact path="/cats" render={( props) => <Cats cats={this.state.cats}/> } />
 
-				  <Route exact path="/NewCat" render={( props) => <NewCat handleNewCat={this.handleNewCat} form={this.state.form} /> } />
+				  <Route exact path="/NewCat" render={( props) => <NewCat handleNewCat={this.handleNewCat} form={this.state.form}
+                  resetForm = {this.resetForm}
+                  /> } />
                   <Route exact path="/" component={Home} />
 				</Switch>
 			</Router>
