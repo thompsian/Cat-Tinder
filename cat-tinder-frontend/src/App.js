@@ -16,35 +16,37 @@ class App extends Component {
   constructor(props){
     super(props)
       this.state = {
-        cats: [],
-      form: {
-          name:"",
-          age:"",
-          enjoys:""
-      }
+        cats: []
     }
   }
 
-  resetForm = () => {
-      this.setState({form: {name: '', age: '', enjoys: ''}})
-  }
+  // resetForm = () => {
+  //     this.setState({form: {name: '', age: '', enjoys: ''}})
+  // }
 
-  handleNewCat(newCatInfo) {
+  handleNewCat = (newCatInfo) => {
 	return createCat(newCatInfo)
     .then(successCat => {
         console.log("SUCCESS! New cat: ", successCat);
+    }).then( e => {
+        this.loadCats()
     })
+
+
 }
 
   componentDidMount() {
-    getCats()
-  	.then(APIcats => {
-  	  this.setState({
-  		cats: APIcats
-  	  })
-  	})
+      this.loadCats()
   }
 
+  loadCats = () => {
+      getCats()
+    	.then(APIcats => {
+    	  this.setState({
+    		cats: APIcats
+    	  })
+      })
+  }
   render() {
     return (
 		<div>
@@ -54,8 +56,7 @@ class App extends Component {
 				<Switch>
                   <Route exact path="/cats" render={( props) => <Cats cats={this.state.cats}/> } />
 
-				  <Route exact path="/NewCat" render={( props) => <NewCat handleNewCat={this.handleNewCat} form={this.state.form}
-                  resetForm = {this.resetForm}
+				  <Route exact path="/NewCat" render={( props) => <NewCat handleNewCat={this.handleNewCat}
                   /> } />
                   <Route exact path="/" component={Home} />
 				</Switch>

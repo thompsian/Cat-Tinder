@@ -10,31 +10,35 @@ class NewCat extends Component {
 
       this.state = {
           success: false,
+          form: {
+              name:"",
+              age:"",
+              enjoys:""
+          }
       }
-      // this.state = {
-      //   form:{
-      //     name: '',
-      //     age: '',
-      //     enjoys: ''
-      //   }
-      // }
     }
 
     handleChange = (event) => {
-        let {form} = this.props
+        let {form} = this.state
         form[event.target.name] = event.target.value
         this.setState({form: form})
     }
 
     handleClick = () => {
-        const { form } = this.props
-
+        const { form } = this.state
         this.props.handleNewCat(form)
         .then( () => {
-            this.setState({success: true})
+            this.setState({
+                success: true,
+                form: {
+                    name:"",
+                    age:"",
+                    enjoys:""
+                }
+            })
         })
-        this.props.resetForm() 
     }
+
   render() {
     return (
 		<div>
@@ -44,21 +48,21 @@ class NewCat extends Component {
                 type="text"
                 name="name"
                 onChange={this.handleChange}
-                value={this.props.form.name}
+                value={this.state.form.name}
             />
             <label id="age">Age</label>
             <Form.Control
                 type="text"
                 name="age"
                 onChange={this.handleChange}
-                value={this.props.form.age}
+                value={this.state.form.age}
             />
             <label id="enjoys">Enjoys</label>
             <Form.Control
                 type="text"
                 name="enjoys"
                 onChange={this.handleChange}
-                value={this.props.form.enjoys}
+                value={this.state.form.enjoys}
             />
             <button type="button" className="btn btn-primary" id="submit" onClick={this.handleClick}>Create Cat Profile</button>
             {this.state.success &&

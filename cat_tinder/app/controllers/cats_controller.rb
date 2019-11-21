@@ -1,6 +1,7 @@
 class CatsController < ApplicationController
     def index
-      cats = Cat.all
+      cats = Cat.order(id: :desc).all
+      # cats = Cat.all.order('id DESC')
       render json: cats
     end
 
