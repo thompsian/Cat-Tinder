@@ -85,7 +85,11 @@ class NewCat extends Component {
                 className = {this.state.form.enjoys.length>10 ? "form-control is-valid" : "form-control"}
             />
             <br />
-            <button type="button" className="btn btn-primary" id="submit" onClick={this.handleClick}>Create Cat Profile</button>
+            <button
+            type="button"
+            className= {this.state.form.name.length===0 || this.state.form.age === "Choose..." ||  this.state.form.enjoys.length<10 ? "btn btn-primary" : "btn btn-success"}
+            id="submit"
+            onClick={this.handleClick}>Create Cat Profile</button>
             {this.state.success &&
                 <Redirect to="/cats" />
             }
