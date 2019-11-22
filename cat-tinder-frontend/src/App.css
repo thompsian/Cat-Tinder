@@ -26,13 +26,14 @@ nav {
 }
 
 .cat-card {
-  /* padding: 1rem; */
-  /* margin: auto; */
-  width: 400px;
+  width: 350px;
   height: auto;
+  margin: 1vmin;
+  margin-top: 2vmin;
 }
 
 .cat-cards-container {
+  margin-top: 2vmin;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
@@ -40,7 +41,7 @@ nav {
 }
 
 .new-profile-form {
-  width: 70%;
+  width: 50%;
   text-align: -webkit-center;
   margin: auto;
 }
