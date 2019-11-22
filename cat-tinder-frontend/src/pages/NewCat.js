@@ -33,37 +33,58 @@ class NewCat extends Component {
                 form: {
                     name:"",
                     age:"",
-                    enjoys:""
-                }
+                    enjoys:""                }
             })
         })
     }
 
   render() {
     return (
-		<div>
+		<div className="new-profile-form">
 			<h2>Create a new Cat profile</h2>
+            <br />
             <label id="name">Name</label>
             <Form.Control
                 type="text"
                 name="name"
                 onChange={this.handleChange}
                 value={this.state.form.name}
+                className = {this.state.form.name.length>0 ? "form-control is-valid" : "form-control"}
             />
+            <br />
             <label id="age">Age</label>
             <Form.Control
-                type="text"
-                name="age"
-                onChange={this.handleChange}
-                value={this.state.form.age}
-            />
-            <label id="enjoys">Enjoys</label>
+              as="select"
+              name="age"
+              placeholder="how old am I?"
+              onChange={this.handleChange}
+              value={this.state.form.age}
+              className = {this.state.form.age !== "Choose..." ? "form-control is-valid" : "form-control"}>
+              <option>Choose...</option>
+              <option>0-1</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>5+</option>
+              <option>Prefer not to tell 🤫</option>
+            </Form.Control>
+            <br />
+            <label for="exampleTextarea" id="enjoys">Enjoys</label>
             <Form.Control
-                type="text"
+                as="textarea"
                 name="enjoys"
+                className="form-control"
+                id="exampleTextarea"
+                rows="3"
+                spellcheck="true"
+                placeholder="What do you enjoy doing? Give us at least 10 words please... Meow 🐱"
                 onChange={this.handleChange}
                 value={this.state.form.enjoys}
+                className = {this.state.form.enjoys.length>10 ? "form-control is-valid" : "form-control"}
             />
+            <br />
             <button type="button" className="btn btn-primary" id="submit" onClick={this.handleClick}>Create Cat Profile</button>
             {this.state.success &&
                 <Redirect to="/cats" />
