@@ -17,7 +17,7 @@ class Cats extends Component {
                     {cat.name}
                   </h3>
                   <div className="card-body">
-                    <h5 className="card-title" className='cat-age'>{cat.age} years old</h5>
+                    <h5 className="card-title" className='cat-age'>{cat.age}</h5>
                   </div>
                   <img style={{height: "auto", width: "100%", display: "block"}} src="https://live.staticflickr.com/68/172629460_f55d8b084d_z.jpg" alt="Card image" />
                   <div className="card-body">
@@ -28,7 +28,7 @@ class Cats extends Component {
                      <a href="#" class="card-link">Delete</a>
                    </div>
                    <div className="card-footer text-muted">
-                     {`Joined at ${cat.created_at}`}
+                     {`Joined at ${cat.created_at.split("").slice(0,10).join("")}`}
                    </div>
                 </div>
                 </div>

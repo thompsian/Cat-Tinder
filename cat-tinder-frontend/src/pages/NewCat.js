@@ -12,7 +12,7 @@ class NewCat extends Component {
           success: false,
           form: {
               name:"",
-              age:"",
+              age:"Choose...",
               enjoys:""
           }
       }
@@ -32,7 +32,7 @@ class NewCat extends Component {
                 success: true,
                 form: {
                     name:"",
-                    age:"",
+                    age:"Choose...",
                     enjoys:""                }
             })
         })
@@ -59,15 +59,15 @@ class NewCat extends Component {
               placeholder="how old am I?"
               onChange={this.handleChange}
               value={this.state.form.age}
-              className = {this.state.form.age !== "Choose..." ? "form-control is-valid" : "form-control"}>
+              className = {this.state.form.age === "Choose..." ? "form-control" : "form-control is-valid"}>
               <option>Choose...</option>
-              <option>0-1</option>
-              <option>1</option>
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>5+</option>
+              <option>0-1 year old</option>
+              <option>1 years old</option>
+              <option>2 years old</option>
+              <option>3 years old</option>
+              <option>4 years old</option>
+              <option>5 years old</option>
+              <option>5+ years old</option>
               <option>Prefer not to tell 🤫</option>
             </Form.Control>
             <br />
