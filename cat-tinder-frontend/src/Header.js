@@ -24,7 +24,7 @@ class Header extends Component {
 
   render() {
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
         <Link className="navbar-brand" to="/">Cat Tinder</Link>
         <button className={this.state.navbarClassName ? "navbar-toggler collapsed" : "navbar-toggler"} type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded={this.state.expanded ? "false" : "true"} aria-label="Toggle navigation" onClick={this.handleClick}>
             <span className="navbar-toggler-icon"></span>

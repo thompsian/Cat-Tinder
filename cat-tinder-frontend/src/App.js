@@ -52,13 +52,14 @@ class App extends Component {
 		<div>
 
 			<Router>
-              <Header />
+        <Header />
 				<Switch>
-                  <Route exact path="/cats" render={( props) => <Cats cats={this.state.cats}/> } />
+          <Route exact path="/cats" render={( props) => <Cats cats={this.state.cats}/> } />
 
 				  <Route exact path="/NewCat" render={( props) => <NewCat handleNewCat={this.handleNewCat}
                   /> } />
-                  <Route exact path="/" component={Home} />
+                  
+          <Route exact path="/" component={Home} />
 				</Switch>
 			</Router>
 		</div>
